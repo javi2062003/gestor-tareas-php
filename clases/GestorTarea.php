@@ -1,19 +1,29 @@
 <?php 
 require_once 'Tarea.php';
 Class GestorTarea {
-    private $listaTareas = array(Tarea $tarea);
+    private $listaTareas = [];
 
     public function agregarTarea (Tarea $tarea) {
-        array_push($listaTareas, $tarea);
+        array_push($this->listaTareas, $tarea);
     }
     public function eliminarTarea (Tarea $tarea) {
-        unset($this->listaTareas[$tarea])
+    foreach ($this->listaTareas as $key => $obj) {
+        if ($obj === $tarea) {  
+            unset($this->listaTareas[$key]);
+            $this->listaTareas = array_values($this->listaTareas);
+            break;
+        }
     }
+}
+
     public function mostrarTareas() {
-        echo $this->listaTareas;
+        foreach ($this->listaTareas as $tarea) {
+        $tarea->mostrarDatos();
+        echo "\n"; 
+}
     }
     public function completarTarea (Tarea $tarea){
-        $tarea->estado = 'completada';
+        $tarea->setEstado('completada');
     }
 }
 ?>

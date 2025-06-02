@@ -15,7 +15,6 @@ Class GestorTarea {
         }
     }
 }
-
     public function mostrarTareas() {
         foreach ($this->listaTareas as $tarea) {
         $tarea->mostrarDatos();
@@ -24,6 +23,10 @@ Class GestorTarea {
     }
     public function completarTarea (Tarea $tarea){
         $tarea->setEstado('completada');
+    }
+
+    public function getListaTareas () {
+        return $this->listaTareas;
     }
 }
 ?>

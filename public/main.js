@@ -1,11 +1,11 @@
-// main.js
+
 
 document.getElementById('form-crear').addEventListener('submit', async function(e) {
   e.preventDefault();
   const titulo = document.getElementById('titulo').value;
   const descripcion = document.getElementById('descripcion').value;
 
-  const res = await fetch('php/crear.php', {
+  const res = await fetch('api/crear.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ titulo, descripcion })
@@ -18,7 +18,7 @@ document.getElementById('form-crear').addEventListener('submit', async function(
 async function completarTarea() {
   const titulo = document.getElementById('titulo-completar').value;
 
-  const res = await fetch('php/completar.php', {
+  const res = await fetch('api/completar.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ titulo })
@@ -31,7 +31,7 @@ async function completarTarea() {
 async function eliminarTarea() {
   const titulo = document.getElementById('titulo-eliminar').value;
 
-  const res = await fetch('php/eliminar.php', {
+  const res = await fetch('api/eliminar.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ titulo })
@@ -42,7 +42,7 @@ async function eliminarTarea() {
 }
 
 async function cargarTareas() {
-  const res = await fetch('php/listar.php');
+  const res = await fetch('api/listar.php');
   const tareas = await res.json();
 
   const lista = document.getElementById('lista-tareas');

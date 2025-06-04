@@ -14,6 +14,13 @@ class Tarea
     public function marcarComoCompletada() {
         $this->estado = 'completada';
     }
+    public function toArray() {
+        return [
+            'titulo' => $this->titulo,
+            'descripcion' => $this->descripcion,
+            'estado' => $this->estado,
+        ];
+    }
     
     public function mostrarDatos() {
         echo $this->titulo;

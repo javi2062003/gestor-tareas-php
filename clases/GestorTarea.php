@@ -19,10 +19,10 @@ class GestorTarea {
             $datos = json_decode($contenido, true);
             if (is_array($datos)) {
                 foreach ($datos as $tareaData) {
-                    $tarea = new Tarea();
-                    $tarea->setTitulo($tareaData['titulo'] ?? null);
-                    $tarea->setDescripcion($tareaData['descripcion'] ?? '');
-                    $tarea->setEstado($tareaData['estado'] ?? 'pendiente');
+                    $titulo = $tareaData['titulo'] ?? '';
+                    $descripcion = $tareaData['descripcion'] ?? '';
+                    $estado = $tareaData['estado'] ?? 'pendiente';
+                    $tarea = new Tarea($titulo, $descripcion, $estado);
                     $this->listaTareas[] = $tarea;
                 }
             }
@@ -102,6 +102,14 @@ class GestorTarea {
             }
         }
     }
+    public function obtenerTareasParaJson() {
+    $resultado = [];
+    foreach ($this->listaTareas as $tarea) {
+        $resultado[] = $tarea->toArray();
+    }
+    return $resultado;
+}
+
 
     public function getListaTareas() {
         return $this->listaTareas;
@@ -110,9 +118,8 @@ class GestorTarea {
             $titulo = leerLinea("Título: ");
             $descripcion = leerLinea("Descripción: ");
             $estado = 'pendiente';
-            $tarea = new Tarea($titulo, $descripcion, $estado)
-
-            return $tarea
+            $tarea = new Tarea($titulo, $descripcion, $estado);
     }
 }
+
 ?>

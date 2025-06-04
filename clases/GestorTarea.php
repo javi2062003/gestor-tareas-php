@@ -8,6 +8,10 @@ class GestorTarea {
     public function __construct() {
         $this->cargarTareasDesdeArchivo();
     }
+    function leerLinea($prompt) {
+    echo $prompt;
+    return trim(fgets(STDIN));
+}
 
     private function cargarTareasDesdeArchivo() {
         if (file_exists($this->archivo)) {
@@ -16,7 +20,7 @@ class GestorTarea {
             if (is_array($datos)) {
                 foreach ($datos as $tareaData) {
                     $tarea = new Tarea();
-                    $tarea->setTitulo($tareaData['id'] ?? null);
+                    $tarea->setTitulo($tareaData['titulo'] ?? null);
                     $tarea->setDescripcion($tareaData['descripcion'] ?? '');
                     $tarea->setEstado($tareaData['estado'] ?? 'pendiente');
                     $this->listaTareas[] = $tarea;
@@ -72,6 +76,14 @@ class GestorTarea {
 
     public function getListaTareas() {
         return $this->listaTareas;
+    }
+    public function crearNuevaTarea(){
+            $titulo = leerLinea("Título: ");
+            $descripcion = leerLinea("Descripción: ");
+            $estado = 'pendiente';
+            $tarea = new Tarea($titulo, $descripcion, $estado)
+
+            return $tarea
     }
 }
 ?>

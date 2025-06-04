@@ -6,6 +6,6 @@ require_once '../clases/GestorTarea.php';
 
 $gestor = new GestorTarea('../data/registros.json');
 
-$tareas = $gestor->obtenerTareas();
+$tareas = $gestor->getListaTareas();
 
 echo json_encode($tareas);

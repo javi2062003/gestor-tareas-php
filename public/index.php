@@ -25,10 +25,8 @@ while (true) {
 
     switch ($opcion) {
         case '1':
-            $titulo = leerLinea("Título: ");
-            $descripcion = leerLinea("Descripción: ");
-            $estado = 'pendiente';
-            $tarea = new Tarea($titulo, $descripcion, $estado);
+            $tarea = new Tarea();
+            $tarea = $gestor->crearNuevaTarea();
             $gestor->agregarTarea($tarea);
             echo "Tarea agregada.\n";
             break;

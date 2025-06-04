@@ -48,7 +48,7 @@ class GestorTarea {
 
     public function eliminarTarea(Tarea $tarea) {
         foreach ($this->listaTareas as $key => $obj) {
-            if ($obj->getId() === $tarea->getId()) {
+            if ($obj->getTitulo() === $tarea->getTitulo()) {
                 unset($this->listaTareas[$key]);
                 $this->listaTareas = array_values($this->listaTareas);
                 $this->guardarTareasEnArchivo();
@@ -63,11 +63,28 @@ class GestorTarea {
             echo "\n";
         }
     }
-
+    public function mostrarTareaPorTitulo(string $titulo) {
+    foreach ($this->listaTareas as $tarea) {
+        if ($tarea->getTitulo() === $titulo) {
+            $tarea->mostrarDatos();
+            echo "\n";
+            break; 
+        }
+    }
+}
     public function completarTarea(Tarea $tarea) {
-        foreach ($this->listaTareas as $obj) {
-            if ($obj->getId() === $tarea->getId()) {
-                $obj->setEstado('completada');
+        foreach ($this->listaTareas as $tareaActual) {
+            if ($tareaActual->getTitulo() === $tarea->getTitulo()) {
+                $tareaActual->setEstado('completada');
+                $this->guardarTareasEnArchivo();
+                break;
+            }
+        }
+    }
+    public function completarTareaPorTitulo(string $titulo): bool {
+        foreach ($this->listaTareas as $tareaActual) {
+            if ($tareaActual->getTitulo() === $titulo) {
+                $tareaActual->setEstado('completada');
                 $this->guardarTareasEnArchivo();
                 break;
             }

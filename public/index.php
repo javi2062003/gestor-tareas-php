@@ -56,8 +56,7 @@ while (true) {
 
         case '4':
             $gestor->mostrarTareas();
-            $idx = leerLinea("Número de tarea a completar (empezando en 1): ");
-            $idx = intval($idx) - 1;
+            $idx = leerLinea("Titulo de la tarea a completar: ");
             $lista = $gestor->getListaTareas();
             if (isset($lista[$idx])) {
                 $gestor->completarTarea($lista[$idx]);

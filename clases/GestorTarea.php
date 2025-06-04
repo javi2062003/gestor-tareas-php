@@ -56,6 +56,18 @@ class GestorTarea {
             }
         }
     }
+    public function eliminarTareaPorTitulo(string $titulo): bool {
+        foreach ($this->listaTareas as $key => $tareaact) {
+            if ($tareaact->getTitulo() === $titulo) {
+                unset($this->listaTareas[$key]);
+                $this->listaTareas = array_values($this->listaTareas);
+                $this->guardarTareasEnArchivo();
+                return true;
+                break;
+            }
+        }
+        return false;
+    }
 
     public function mostrarTareas() {
         foreach ($this->listaTareas as $tarea) {

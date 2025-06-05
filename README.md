@@ -1,49 +1,71 @@
-# Gestor de Tareas en PHP
+# 📝 Gestor de Tareas en PHP
 
-Este proyecto es una aplicación sencilla en PHP para gestionar tareas desde la consola. Permite agregar, eliminar, listar y completar tareas.
+Este proyecto es una aplicación sencilla en PHP para gestionar tareas desde la consola o una interfaz web. Permite agregar, eliminar, listar y completar tareas usando clases y almacenamiento en un archivo JSON.
 
-## Características
+## ✨ Características
 
 - Añadir nuevas tareas con título, descripción y estado.
 - Listar todas las tareas actuales.
 - Eliminar una tarea específica.
 - Marcar una tarea como completada.
+- Interfaz web opcional (HTML, JS y CSS) conectada a API en PHP.
 
-## Requisitos
+## 📦 Requisitos
 
-- PHP 7.0 o superior instalado en tu sistema.
-- Terminal o consola para ejecutar scripts PHP de forma interactiva.
+- PHP 7.0 o superior.
+- Navegador web moderno (para la versión con interfaz).
+- Terminal o consola (para ejecutar scripts CLI).
+- Archivo `registros.json` accesible con permisos de lectura y escritura.
 
-## Instalación
+## 🚀 Instalación
 
-1. Clona este repositorio o descarga los archivos.
-2. Navega en tu terminal hasta la carpeta del proyecto.
+1. Clona este repositorio o descarga los archivos:
 
-```bash
-cd /ruta/al/proyecto
+   ```bash
+   git clone https://github.com/tu-usuario/gestor-tareas.git
+   cd gestor-tareas
+   ```
 
+2. Inicia el servidor PHP desde la raíz o la carpeta `public`:
 
-Uso
-Ejecuta el script principal desde la terminal:
+   ```bash
+   php -S localhost:8000 -t public
+   ```
 
-php nombre_del_script.php
-Luego sigue el menú para gestionar tus tareas:
+3. Abre tu navegador y accede a:
 
-Escribe el número de la opción que quieres usar.
+   ```
+   http://localhost:8000
+   ```
 
-Para agregar tareas, ingresa el título y descripción cuando se te solicite.
+## 📁 Estructura del Proyecto
 
-Para eliminar o completar tareas, selecciona el número de la tarea de la lista mostrada.
+```
+Gestor-Tareas/
+├── clases/
+│   ├── Tarea.php               # Clase para cada tarea
+│   └── GestorTarea.php         # Clase que gestiona todas las tareas
+│
+├── public/
+│   ├── index.html              # Interfaz web
+│   ├── estilos.css             # Estilos de la interfaz
+│   ├── main.js                 # Lógica frontend (fetch API)
+│   ├──data/
+│   |   ├── registros.json      # Archivo donde se almacenan las tareas
+|   |
+|   └── api/
+│       ├── listar.php          # Endpoint para listar tareas
+│       ├── crear.php           # Endpoint para crear tareas
+│       ├── eliminar.php        # Endpoint para eliminar tareas
+│       └── completar.php       # Endpoint para marcar tareas como completadas
+│
+└── README.md
+```
 
-Estructura del proyecto
-Tarea.php: Clase que representa una tarea individual.
+## 🤝 Contribuciones
 
-GestorTarea.php: Clase que maneja la lista de tareas y operaciones sobre ellas.
+Si quieres mejorar este proyecto, eres bienvenido a enviar pull requests o reportar issues. Toda contribución es apreciada.
 
-main.php (o el archivo que uses): Script principal para la interacción con el usuario.
+## 📄 Licencia
 
-Contribuciones
-Si quieres mejorar este proyecto, eres bienvenido a enviar pull requests o reportar issues.
-
-Licencia
-Este proyecto está bajo la licencia MIT.
+Este proyecto está licenciado bajo la MIT License.

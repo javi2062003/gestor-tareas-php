@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once '../clases/GestorTarea.php';
+require_once __DIR__ . '/../../clases/GestorTarea.php';
 
 $gestor = new GestorTarea('../data/registros.json');
 
@@ -15,7 +15,7 @@ if (!$input || empty($input['titulo'])) {
 $exito = $gestor->eliminarTareaPorTitulo($input['titulo']);
 
 if ($exito) {
-    echo json_encode(['mensaje' => 'Tarea marcada como completada']);
+    echo json_encode(['mensaje' => 'Tarea eliminada']);
 } else {
     echo json_encode(['error' => 'No se encontró ninguna tarea con ese título']);
 }

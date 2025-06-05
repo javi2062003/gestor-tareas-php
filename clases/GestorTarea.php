@@ -98,9 +98,11 @@ class GestorTarea {
             if ($tareaActual->getTitulo() === $titulo) {
                 $tareaActual->setEstado('completada');
                 $this->guardarTareasEnArchivo();
+                return true;
                 break;
             }
         }
+        return false;
     }
     public function obtenerTareasParaJson() {
     $resultado = [];

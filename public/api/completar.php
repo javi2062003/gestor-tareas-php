@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once '../clases/GestorTarea.php';
+require_once __DIR__ . '/../../clases/GestorTarea.php';
 
 $gestor = new GestorTarea('../data/registros.json');
 
